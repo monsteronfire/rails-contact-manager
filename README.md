@@ -23,3 +23,4 @@ Things you may want to cover:
 
 * ...
 # rails-contact-manager
+Based on this: http://tutorials.jumpstartlab.com/projects/contact_manager.html
