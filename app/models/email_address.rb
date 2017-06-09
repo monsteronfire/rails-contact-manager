@@ -1,4 +1,4 @@
 class EmailAddress < ApplicationRecord
-  validates :address, presence: true
-  belongs_to :contact, polymorphic: true
+  validates :address, :contact_id, presence: true
+  belongs_to :contact, polymorphic: true, optional: true
 end
