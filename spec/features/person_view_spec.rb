@@ -17,7 +17,7 @@ describe 'the person view', type: :feature do
     end
 
     it 'has a link to add a new phone number' do
-      expect(page).to have_link('Add phone number', href: new_phone_number_path(person_id: person.id))
+      expect(page).to have_link('Add phone number', href: new_phone_number_path(contact_id: person.id, contact_type: 'Person'))
     end
 
     it 'adds a new phone number' do
@@ -67,11 +67,10 @@ describe 'the person view', type: :feature do
 
     it 'shows the email addresses' do
       expect(page).to have_selector('li', text: 'bob@mail.com')
-      expect(page).to have_selector('li', text: 'alicesmith@mail.com')
     end
 
     it 'has an add email address link' do
-      expect(page).to have_link('Add email address', href: new_email_address_path(person_id: person.id))
+      expect(page).to have_link('Add email address', href: new_email_address_path(contact_id: person.id, contact_type: 'Person'))
     end
 
     it 'adds a new email address' do
