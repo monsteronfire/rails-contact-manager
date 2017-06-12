@@ -5,10 +5,6 @@ class PhoneNumbersController < ApplicationController
     @phone_number = PhoneNumber.new(contact_id: params[:contact_id], contact_type: params[:contact_type])
   end
 
-  # GET /phone_numbers/1/edit
-  def edit
-  end
-
   # POST /phone_numbers
   # POST /phone_numbers.json
   def create
