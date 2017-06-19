@@ -32,4 +32,5 @@ RSpec.describe Person, type: :model do
   it 'converts to a string with last name, first name' do
     expect(person.to_s).to eq('Smith, Alice')
   end
+
 end
