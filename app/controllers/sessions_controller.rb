@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
   def create
-    render test: request.env['omniauth.auth'].inspect
+    data = request.env['omniauth.auth']
+    user = User.where(provider: data['provider'], uid: data['uid'], name: data['info']['name']).first_or_create
+    head :ok
   end
 end
