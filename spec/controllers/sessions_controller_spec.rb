@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SessionsController do
   describe '#create' do
-    it 'creates a user from Twitter data' do
+    it 'logs in a new user' do
       @request.env['omniauth.auth'] = {
         'provider': 'twitter',
         'info': { 'name' => 'Alice Smith' },
@@ -11,19 +11,20 @@ describe SessionsController do
 
       post :create
       user = User.find_by_uid_and_provider('abc123', 'twitter')
-      expect(user.name).to eq('Alice Smith')
+      expect(controller.current_user.id).to eq(user.id)
     end
 
-    it 'doesn\'t create duplicate users' do
+    it 'logs in an existing user' do
       @request.env['omniauth.auth'] = {
         'provider': 'twitter',
         'info': {'name': 'Bob Jones'},
         'uid': 'xyz456'
       }
 
-      User.create(provider: 'twitter', uid: 'xyz456', name: 'Bob Jones')
+      user = User.create(provider: 'twitter', uid: 'xyz456', name: 'Bob Jones')
       post :create
-      expect(User.count).to eq(2)
+      expect(User.count).to eq(1)
+      expect(controller.current_user.id).to eq(user.id)
     end
   end
 end
