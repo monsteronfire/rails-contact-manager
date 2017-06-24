@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) do
+    User.new(name: 'alicesmith', uid: '4321567', provider: 'twitter')
+  end
 end
