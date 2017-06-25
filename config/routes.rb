@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   get '/auth/:provider/callback' => 'sessions#create'
 
-  root to: 'site#index'
+  root to: 'companies#index'
 end

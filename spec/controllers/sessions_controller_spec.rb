@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe SessionsController do
+RSpec.describe SessionsController, type: :controller do
   describe '#create' do
     it 'logs in a new user' do
       @request.env['omniauth.auth'] = {
